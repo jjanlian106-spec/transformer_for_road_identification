@@ -1,0 +1,144 @@
+[
+    { 
+        "road_id": "0",
+        "name": "dry_asphalt_severe",        
+        "mu": 0.78 
+    },
+    { 
+        "road_id": "1",  
+        "name": "dry_asphalt_slight",        
+        "mu": 0.92 
+    },
+    { 
+        "road_id": "2",  
+        "name": "dry_asphalt_smooth",        
+        "mu": 0.98 
+    },
+
+    { 
+        "road_id": "3",  
+        "name": "dry_concrete_severe",       
+        "mu": 0.82 
+    },
+    { 
+        "road_id": "4",  
+        "name": "dry_concrete_slight",       
+        "mu": 0.95 
+    },
+    { 
+        "road_id": "5",  
+        "name": "dry_concrete_smooth",       
+        "mu": 1.00 
+    },
+
+    { 
+        "road_id": "6",  
+        "name": "dry_gravel",                
+        "mu": 0.50 
+    },
+    { 
+        "road_id": "7",  
+        "name": "dry_mud",                   
+        "mu": 0.40 
+    },
+
+    { 
+        "road_id": "8",  
+        "name": "fresh_snow",                
+        "mu": 0.20 
+    },
+    { 
+        "road_id": "9",  
+        "name": "ice",                       
+        "mu": 0.08 
+    },
+    { 
+        "road_id": "10", 
+        "name": "melted_snow",               
+        "mu": 0.25 
+    },
+
+    { 
+        "road_id": "11", 
+        "name": "water_asphalt_severe",      
+        "mu": 0.35 
+    },
+    { 
+        "road_id": "12", 
+        "name": "water_asphalt_slight",      
+        "mu": 0.50
+    },
+    { 
+        "road_id": "13", 
+        "name": "water_asphalt_smooth",      
+        "mu": 0.60 
+    },
+
+    { 
+        "road_id": "14", 
+        "name": "water_concrete_severe",     
+        "mu": 0.40 
+    },
+    { 
+        "road_id": "15", 
+        "name": "water_concrete_slight",     
+        "mu": 0.55 
+    },
+    { 
+        "road_id": "16", 
+        "name": "water_concrete_smooth",     
+        "mu": 0.65 
+    },
+
+    { 
+        "road_id": "17", 
+        "name": "water_gravel",              
+        "mu": 0.45 
+    },
+    { 
+        "road_id": "18", 
+        "name": "water_mud",                 
+        "mu": 0.30 
+    },
+    { 
+        "road_id": "19", 
+        "name": "wet_asphalt_severe",        
+        "mu": 0.55 
+    },
+    { 
+        "road_id": "20", 
+        "name": "wet_asphalt_slight",        
+        "mu": 0.68 
+    },
+    { 
+        "road_id": "21", 
+        "name": "wet_asphalt_smooth",        
+        "mu": 0.78 
+    },
+
+    { 
+        "road_id": "22", 
+        "name": "wet_concrete_severe",       
+        "mu": 0.60 
+    },
+    { 
+        "road_id": "23", 
+        "name": "wet_concrete_slight",       
+        "mu": 0.72 
+    },
+    { 
+        "road_id": "24", 
+        "name": "wet_concrete_smooth",       
+        "mu": 0.85 
+    },
+    { 
+        "road_id": "25", 
+        "name": "wet_gravel",                
+        "mu": 0.55 
+    },
+    { 
+        "road_id": "26", 
+        "name": "wet_mud",                   
+        "mu": 0.35 
+    }
+]

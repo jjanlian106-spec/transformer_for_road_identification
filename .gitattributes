@@ -1,2 +1,4 @@
+/Users/lzj/github_project/transformer_for_road_identification/weights filter=lfs diff=lfs merge=lfs -text
+/Users/lzj/github_project/transformer_for_road_identification/pre_weights filter=lfs diff=lfs merge=lfs -text
 weights/* filter=lfs diff=lfs merge=lfs -text
 pre_weights/* filter=lfs diff=lfs merge=lfs -text

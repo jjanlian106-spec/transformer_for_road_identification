@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bokeh Plot</title>
+    <style>
+      html, body {
+        box-sizing: border-box;
+        display: flow-root;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.8.1.min.js"></script>
+<script type="text/javascript">
+Bokeh.set_log_level("info");
+</script>
+  </head>
+  <body>
+    <div id="d541ca36-026c-44bb-b481-955329779484" data-root-id="p1009" style="display: contents;"></div>
+  
+    <script type="application/json" id="abaa5a6e-1b91-45c6-80cd-db3b6d097124">
+      {"285ae1e9-833f-4f38-9bf1-91a69ecb8773":{"version":"3.8.1","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1067","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1068"}}},"roots":[{"type":"object","name":"Figure","id":"p1009","attributes":{"width":1400,"height":800,"sizing_mode":"stretch_width","x_range":{"type":"object","name":"DataRange1d","id":"p1010"},"y_range":{"type":"object","name":"DataRange1d","id":"p1011"},"x_scale":{"type":"object","name":"LinearScale","id":"p1019"},"y_scale":{"type":"object","name":"LinearScale","id":"p1020"},"title":{"type":"object","name":"Title","id":"p1012","attributes":{"text":"Predicted vs Real mu"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1049","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1006","attributes":{"selected":{"type":"object","name":"Selection","id":"p1007","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1008"},"data":{"type":"map","entries":[["level_0",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3DARJAIAAEwItIEf3/tXZnNkmKm7vVw9PmZXd4+zh9/Vz+10m/GkQAAAA="},"shape":[17],"dtype":"int32","order":"little"}],["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3DARKAEBAAwJMKEfX/z9qd2RQRh9nTy9titfnYHb5Ol5+/G3tGA4xEAAAA"},"shape":[17],"dtype":"int32","order":"little"}],["mu_pred",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/yu05bq+uOCtvTEYvMagD3/ViOk/9BROQ8Qv26eBwTU4H51G14euH50GAAhNNKiIAAAA"},"shape":[17],"dtype":"float64","order":"little"}],["path_pred",{"type":"ndarray","array":["test_images/202201270008066-dry-asphalt-slight.jpg","test_images/202201272322346-wet-concrete-smooth.jpg","test_images/202201272322349-wet-concrete-smooth.jpg","test_images/202201272323316-wet-concrete-smooth.jpg","test_images/202201272332213-wet-asphalt-slight.jpg","test_images/202201272338533-wet-asphalt-slight.jpg","test_images/202201272345005-water-mud.jpg","test_images/202201272348339-wet-asphalt-slight.jpg","test_images/202201281040324-water-mud.jpg","test_images/202201281042134-water-mud.jpg","test_images/202201281042135-water-mud.jpg","test_images/202201281241292-wet-asphalt-slight.jpg","test_images/202201281242112-wet-asphalt-slight.jpg","test_images/202201281254037-wet-asphalt-slight.jpg","test_images/202201281255254-water-mud.jpg","test_images/202201281555495-water-mud.jpg","test_images/202201281556544-water-asphalt-severe.jpg"],"shape":[17],"dtype":"object","order":"little"}],["mu_real",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/yu05bq+uOCtvTEYvMagD3/ViOk/9BROQ8QvY/DRaXR9uNSngcE1ewBbBsCkiAAAAA=="},"shape":[17],"dtype":"float64","order":"little"}],["path_real",{"type":"ndarray","array":["test_images/202201270008066-dry-asphalt-slight.jpg","test_images/202201272322346-wet-concrete-smooth.jpg","test_images/202201272322349-wet-concrete-smooth.jpg","test_images/202201272323316-wet-concrete-smooth.jpg","test_images/202201272332213-wet-asphalt-slight.jpg","test_images/202201272338533-wet-asphalt-slight.jpg","test_images/202201272345005-water-mud.jpg","test_images/202201272348339-wet-asphalt-slight.jpg","test_images/202201281040324-water-mud.jpg","test_images/202201281042134-water-mud.jpg","test_images/202201281042135-water-mud.jpg","test_images/202201281241292-wet-asphalt-slight.jpg","test_images/202201281242112-wet-asphalt-slight.jpg","test_images/202201281254037-wet-asphalt-slight.jpg","test_images/202201281255254-water-mud.jpg","test_images/202201281555495-water-mud.jpg","test_images/202201281556544-water-asphalt-severe.jpg"],"shape":[17],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1050","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1051"}}},"glyph":{"type":"object","name":"Line","id":"p1046","attributes":{"x":{"type":"field","field":"index"},"y":{"type":"field","field":"mu_real"},"line_color":"red","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1047","attributes":{"x":{"type":"field","field":"index"},"y":{"type":"field","field":"mu_real"},"line_color":"red","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1048","attributes":{"x":{"type":"field","field":"index"},"y":{"type":"field","field":"mu_real"},"line_color":"red","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1060","attributes":{"data_source":{"id":"p1006"},"view":{"type":"object","name":"CDSView","id":"p1061","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1062"}}},"glyph":{"type":"object","name":"Line","id":"p1057","attributes":{"x":{"type":"field","field":"index"},"y":{"type":"field","field":"mu_pred"},"line_color":"blue","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1058","attributes":{"x":{"type":"field","field":"index"},"y":{"type":"field","field":"mu_pred"},"line_color":"blue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1059","attributes":{"x":{"type":"field","field":"index"},"y":{"type":"field","field":"mu_pred"},"line_color":"blue","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1018","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1031"},{"type":"object","name":"WheelZoomTool","id":"p1032","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1033","attributes":{"dimensions":"both","overlay":{"type":"object","name":"BoxAnnotation","id":"p1034","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1040","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1039","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"ResetTool","id":"p1041"},{"type":"object","name":"SaveTool","id":"p1042"},{"type":"object","name":"HoverTool","id":"p1064","attributes":{"renderers":"auto","tooltips":[["index","@index"],["pred mu","@mu_pred"],["real mu","@mu_real"],["pred path","@path_pred"],["real path","@path_real"]],"sort_by":null}}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1026","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1027","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1028"},"axis_label":"mu","major_label_policy":{"type":"object","name":"AllLabels","id":"p1029"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1021","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1022","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1023"},"axis_label":"index","major_label_policy":{"type":"object","name":"AllLabels","id":"p1024"}}}],"center":[{"type":"object","name":"Grid","id":"p1025","attributes":{"axis":{"id":"p1021"}}},{"type":"object","name":"Grid","id":"p1030","attributes":{"dimension":1,"axis":{"id":"p1026"}}},{"type":"object","name":"Legend","id":"p1052","attributes":{"location":"top_left","items":[{"type":"object","name":"LegendItem","id":"p1053","attributes":{"label":{"type":"value","value":"real mu"},"renderers":[{"id":"p1049"}]}},{"type":"object","name":"LegendItem","id":"p1063","attributes":{"label":{"type":"value","value":"predicted mu"},"renderers":[{"id":"p1060"}]}}]}}]}}]}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('abaa5a6e-1b91-45c6-80cd-db3b6d097124').textContent;
+              const render_items = [{"docid":"285ae1e9-833f-4f38-9bf1-91a69ecb8773","roots":{"p1009":"d541ca36-026c-44bb-b481-955329779484"},"root_ids":["p1009"]}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>
