@@ -20,9 +20,10 @@ def main():
     s_build = root / 'mkroad_mu_csv' / 'road_json_file' / 'build_road_json.py'
     s_real = root / 'mkroad_mu_csv' / 'real_road2csv.py'
     s_predict = root / 'mkroad_mu_csv' / 'predict_road2csv.py'
+    s_dynamic = root / 'compline_with_m' / 'run_m_python.py'
     s_show = root / 'mkroad_mu_csv' / 'show.py'
 
-    scripts = [s_build, s_real, s_predict, s_show]
+    scripts = [s_build, s_real, s_predict, s_dynamic , s_show]
 
     for s in scripts:
         if not s.exists():
@@ -33,6 +34,7 @@ def main():
         run_script(s_build)
         run_script(s_real)
         run_script(s_predict)
+        run_script(s_dynamic)
         run_script(s_show)
     except Exception as e:
         print(f"Error running pipeline: {e}")
