@@ -22,7 +22,7 @@ def gather_images(input_dir: Path, recursive: bool):
 def main():
     #输入文件夹
     #input_dir = "D:/dataset/RSCD/vali_20k"
-    input_dir = "test_images"
+    input_dir = "selected_images"
     #输出的路面json文件
     output_path = "road_info/road.json"
     parser = argparse.ArgumentParser()

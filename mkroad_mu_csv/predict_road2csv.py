@@ -113,16 +113,16 @@ def multi_predict2csv():
             label = class_indict.get(str(idx), str(idx))
             mu = mu_map.get(label)
             mu_str = '' if mu is None else mu
-            results.append((i, mu_str, img_path))
+            results.append((i, mu_str, p, img_path))
         except Exception:
-            results.append((i, '', img_path))
+            results.append((i, '', '', img_path))
 
     # write CSV output
     out_csv = args.out_csv
     import csv
     with open(out_csv, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(['index', 'mu', 'path'])
+        writer.writerow(['index', 'mu', 'prob', 'image_path'])
         for row in results:
             writer.writerow(row)
 
