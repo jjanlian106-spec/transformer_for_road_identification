@@ -66,17 +66,20 @@ def main():
     df = df.sort_values('index')
     df = df.fillna({'mu_fusi': float('nan'),'mu_pred': float('nan'), 'mu_real': float('nan'),'mu_dynamic': float('nan'),'path_fusi':'','path_pred': '', 'path_real': '','path_dynamic': ''})
 
+    # Convert index to time by multiplying by 0.001
+    df['index'] = df['index'] * 0.001
+
     source = ColumnDataSource(df)
 
     # wider canvas and responsive width to avoid narrow display
-    p = figure(title='Predicted vs Real mu', x_axis_label='index', y_axis_label='mu',
+    p = figure(title='Predicted vs Real mu', x_axis_label='time (s)', y_axis_label='mu',
                tools='pan,wheel_zoom,box_zoom,reset,save',
                width=1400, height=800, sizing_mode='stretch_width')
     p.line('index', 'mu_fusi', source=source, color='green', legend_label='fusion mu', line_width=2)
     p.line('index', 'mu_real', source=source, color='red', legend_label='real mu', line_width=2)
     p.line('index', 'mu_pred', source=source, color='blue', legend_label='vison mu', line_width=2)
     p.line('index', 'mu_dynamic', source=source, color='orange', legend_label='dynamic mu', line_width=2)
-    hover = HoverTool(tooltips=[('index', '@index'),
+    hover = HoverTool(tooltips=[('time', '@index'),
                                 ('fusi mu', '@mu_fusi'),
                                 ('pred mu', '@mu_pred'),
                                 ('real mu', '@mu_real'),
