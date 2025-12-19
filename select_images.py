@@ -1,45 +1,98 @@
 import os
+import json
 import shutil
 import argparse
-from pathlib import Path
+import random
 
-def select_and_copy_images(input_dir, output_dir):
-    # Ensure output directory exists
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
+# Load road mu data
+road_json_path = 'mkroad_mu_csv/road_json_file/road_mu_dir.json'
+with open(road_json_path, 'r') as f:
+    data = json.load(f)
 
-    # Get all image files (assuming jpg and png)
-    image_extensions = ('.jpg', '.png', '.jpeg')
-    all_files = [f for f in os.listdir(input_dir) if f.lower().endswith(image_extensions)]
-    all_files = [os.path.join(input_dir, f) for f in all_files]
+mu_dict = {item['name']: item['mu'] for item in data}
 
-    # Select dry concrete smooth or dry asphalt smooth images (first 1500)
-    dry_list = [f for f in all_files if os.path.basename(f).endswith('dry-concrete-smooth.jpg') or os.path.basename(f).endswith('dry-asphalt-smooth.jpg') or os.path.basename(f).endswith('dry-asphalt-slight.jpg')]
-    selected_dry = sorted(dry_list, key=lambda x: os.path.basename(x))[:1492]
+# Define high and low mu classes
+high_names = [name for name, mu in mu_dict.items() if mu >= 0.9]
+low_names = [name for name, mu in mu_dict.items() if mu <= 0.3]
 
-    # Select ice, fresh snow, or water mud images (first 1300)
-    ice_list = [f for f in all_files if os.path.basename(f).endswith('ice.jpg') or os.path.basename(f).endswith('fresh-snow.jpg') or os.path.basename(f).endswith('water-mud.jpg')]
-    selected_ice = sorted(ice_list, key=lambda x: os.path.basename(x))[:1308]
+print(f"High mu classes (>=0.9): {high_names}")
+print(f"Low mu classes (<=0.3): {low_names}")
 
-    # Combine selected images
-    selected_images = selected_dry + selected_ice
+# Parse arguments
+parser = argparse.ArgumentParser(description='Select 2800 images: 1500 high mu, 1300 low mu, grouped by class.')
+input_dir = "/Volumes/U_DISC/RSCD/test_50k"
+output_dir = "/Users/lzj/github_project/transformer_for_road_identification/selected_images"
+parser.add_argument('--input_dir', default=input_dir, help='Input directory containing images')
+parser.add_argument('--output_dir', default=output_dir, help='Output directory for selected images')
+args = parser.parse_args()
 
-    # Copy to output directory
-    for img_path in selected_images:
-        filename = os.path.basename(img_path)
-        output_path = os.path.join(output_dir, filename)
-        shutil.copy(img_path, output_path)
-        print(f"Copied {filename} to {output_dir}")
+# Get list of jpg files
+files = [f for f in os.listdir(args.input_dir) if f.lower().endswith('.jpg')]
+print(f"Found {len(files)} jpg files in input directory.")
 
-    print(f"Dry images copied: {len(selected_dry)}")
-    print(f"Ice/Snow/Mud images copied: {len(selected_ice)}")
-    print(f"Total images copied: {len(selected_images)}")
+# Group files by class
+high_files = {name: [] for name in high_names}
+low_files = {name: [] for name in low_names}
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Select and copy specific images from input directory to output directory.')
-    input_path = "/Volumes/U_disc/RSCD/test_50k"
-    output_path = "/Users/lzj/github_project/transformer_for_road_identification/selected_images"
-    parser.add_argument('--input', type=str, default=input_path, help='Input directory containing images')
-    parser.add_argument('--output', type=str, default=output_path, help='Output directory to copy selected images')
-    args = parser.parse_args()
+for file in files:
+    parts = file.split('-')
+    if len(parts) < 2:
+        continue
+    name_part = '-'.join(parts[1:])
+    if '.' in name_part:
+        name_part = name_part.rsplit('.', 1)[0]
+    name = name_part.replace('-', '_')
+    if name in high_files:
+        high_files[name].append(file)
+    elif name in low_files:
+        low_files[name].append(file)
 
-    select_and_copy_images(args.input, args.output)
+print(f"High mu files per class: {{k: len(v) for k,v in high_files.items()}}")
+print(f"Low mu files per class: {{k: len(v) for k,v in low_files.items()}}")
+
+# Calculate number per class
+num_high = 1500
+num_low = 1300
+num_classes_high = len(high_names)
+num_classes_low = len(low_names)
+
+per_class_high = num_high // num_classes_high
+remainder_high = num_high % num_classes_high
+per_class_low = num_low // num_classes_low
+remainder_low = num_low % num_classes_low
+
+# Select high mu images
+selected_high = []
+for i, name in enumerate(high_names):
+    files_list = high_files[name]
+    num_to_select = per_class_high + (1 if i < remainder_high else 0)
+    if len(files_list) < num_to_select:
+        print(f"Warning: Only {len(files_list)} files for {name}, selecting all.")
+        num_to_select = len(files_list)
+    selected = random.sample(files_list, num_to_select)
+    selected_high.extend(selected)
+
+# Select low mu images
+selected_low = []
+for i, name in enumerate(low_names):
+    files_list = low_files[name]
+    num_to_select = per_class_low + (1 if i < remainder_low else 0)
+    if len(files_list) < num_to_select:
+        print(f"Warning: Only {len(files_list)} files for {name}, selecting all.")
+        num_to_select = len(files_list)
+    selected = random.sample(files_list, num_to_select)
+    selected_low.extend(selected)
+
+print(f"Selected {len(selected_high)} high mu images, {len(selected_low)} low mu images.")
+
+# Create output directory
+os.makedirs(args.output_dir, exist_ok=True)
+
+# Copy selected images with ordered names
+all_selected = selected_high + selected_low
+for i, file in enumerate(all_selected):
+    src = os.path.join(args.input_dir, file)
+    dst = os.path.join(args.output_dir, f"{i+1:04d}_{file}")
+    shutil.copy(src, dst)
+
+print(f"Copied {len(all_selected)} images to {args.output_dir}")
